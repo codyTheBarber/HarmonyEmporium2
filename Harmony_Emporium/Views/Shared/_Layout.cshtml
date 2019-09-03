@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Harmony Emporium</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/HarmonyEmporium.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="navbar-left"><img src="~/Content/Images/logo.png" width="100" height="50"</a>
+                @Html.ActionLink("HarmonyEmporium", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+
+
+
+                <ul class="nav navbar-nav">
+
+                    @switch (Session["RoleID"])
+                    {
+                        // name of page, name of method inside controller, controller
+                        //logged out
+                        case null:
+                            <li>@Html.ActionLink("Brands ", "AllBrands", "Brands")</li>
+                            <li>@Html.ActionLink("Categories", "AllCategories", "Categories")</li>
+                            <li>@Html.ActionLink("Login", "Login", "UserAccount")</li>
+                            <li>@Html.ActionLink("Register", "Register", "UserAccount")</li>
+                            break;
+                        //regular user
+                        case 1:
+
+                            <li>@Html.ActionLink("Brands", "AllBrands", "Brands")</li>
+                            <li>@Html.ActionLink("Categories", "AllCategories", "Categories")</li>
+                            <li>@Html.ActionLink("Cart", "MyCart", "Cart", new { Limit = false }, null)</li>
+                            <li>@Html.ActionLink("Settings ", "LogOut", "UserAccount")</li>
+                            <li>@Html.ActionLink("LogOut", "LogOut", "UserAccount")</li>
+                            break;
+                        //Power user
+                        case 2:
+                            <li>@Html.ActionLink("Brands", "AllBrands", "Brands")</li>
+                            <li>@Html.ActionLink("Categories", "AllCategories", "Categories")</li>
+                            <li>@Html.ActionLink("Cart", "MyCart", "Cart", new { Limit = false }, null)</li>
+                            <li>@Html.ActionLink("Settings ", "LogOut", "UserAccount")</li>
+                            <li>@Html.ActionLink("LogOut", "LogOut", "UserAccount")</li>
+                            break;
+                        //administrator
+                        case 3:
+                            <li>@Html.ActionLink("Brands", "AllBrands", "Brands")</li>
+                            <li>@Html.ActionLink("Categories", "AllCategories", "Categories")</li>
+                            <li>@Html.ActionLink("Suppliers", "Suppliers", "Index")</li>
+                            <li>@Html.ActionLink("Users", "AllUsers", "UserAdministration")</li>
+                            <li>@Html.ActionLink("LogOut", "LogOut", "UserAccount")</li>
+                            break;
+                        //CEO
+                        case 4:
+                            <li>@Html.ActionLink("Suppliers", "Suppliers", "Index")</li>
+                            <li>@Html.ActionLink("Reports", "Reports", "Index")</li>
+                            <li>@Html.ActionLink("LogOut", "LogOut", "UserAccount")</li>
+                            break;
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+
+    </div>
+
+    <footer>
+        <p class="year">&copy; @DateTime.Now.Year - HarmonyEmporium</p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

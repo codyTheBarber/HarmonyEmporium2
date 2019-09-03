@@ -1,0 +1,46 @@
+﻿
+@using Harmony_Emporium.Models
+@using Harmony_Emporium.Models.ViewModels
+@Styles.Render("~/Content/HarmonyEmporium.css")
+@{
+    ViewBag.Title = "All Users";
+
+
+
+}
+<h1>@ViewBag.Message</h1>
+
+
+
+
+<div class="UsersList">
+    <table>
+        <tr>
+            <th>Email</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Creation Date</th>
+            <th> </th>
+
+        </tr>
+        @foreach (ModelUser SingleUser in Model.AllUsers)
+        {
+        <tr>
+            <td>@SingleUser.Email</td>
+            <td>@SingleUser.FirstName</td>
+            <td>@SingleUser.LastName</td>
+            <td>@SingleUser.Address</td>
+            <td>@SingleUser.Phone</td>
+            <td>@SingleUser.AccountCreateDate</td>
+            <td>@Html.ActionLink("Delete","DeleteUser","UserAdministration",routeValues:new { UserID=SingleUser.UserID}, htmlAttributes:new { @class= "btn btn-default"})</td>
+
+
+        </tr>
+
+
+        }
+    </table>
+</div>
+

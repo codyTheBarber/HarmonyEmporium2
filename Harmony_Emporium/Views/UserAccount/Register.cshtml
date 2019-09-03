@@ -1,0 +1,88 @@
+﻿@model Harmony_Emporium.Models.ViewModels.RegisterViewModel
+@using Harmony_Emporium.Models
+
+@{
+    ViewBag.Title = "Register Account";
+}
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+<div>
+    @using (Html.BeginForm("Register", "UserAccount", FormMethod.Post))
+    {
+        <div class="form-group">
+            <table>
+                <tr>
+                    <td>
+                        <span>Email</span>
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Email)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span>Password</span>
+                    </td>
+                    <td>
+                        @Html.PasswordFor(m => m.Password)
+                    </td>
+                </tr>
+
+                <tr>
+
+                    <td>
+                        <span>Confirm Password</span>
+                    </td>
+                    <td>
+                        @Html.PasswordFor(m => m.ConfirmPassword)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>First Name</span>
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.FirstName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Last Name</span>
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.LastName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Address</span>
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Address)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Birthday</span>
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Birthday)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Phone</span>
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Phone)
+                    </td>
+                </tr>
+
+            </table>
+
+            <input type="submit" value="Submit" />
+        </div>
+    }
+</div>

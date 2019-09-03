@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8BC633B5-8984-4357-878C-23F3DFBA73C0}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>DataAccesLayer</RootNamespace>
+    <AssemblyName>DataAccesLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Objects\BrandDAL.cs" />
+    <Compile Include="BrandMapper.cs" />
+    <Compile Include="Objects\CartItemDAL.cs" />
+    <Compile Include="CartItemMapper.cs" />
+    <Compile Include="Objects\CategoryDAL.cs" />
+    <Compile Include="CategoryMapper.cs" />
+    <Compile Include="Objects\FeeDAL.cs" />
+    <Compile Include="FeeMapper.cs" />
+    <Compile Include="Objects\HashHistoryDAL.cs" />
+    <Compile Include="HashHistoryMapper.cs" />
+    <Compile Include="Objects\Mapper.cs" />
+    <Compile Include="Objects\OrderDAL.cs" />
+    <Compile Include="Objects\OrderItemDAL.cs" />
+    <Compile Include="OrderItemMapper.cs" />
+    <Compile Include="OrderMapper.cs" />
+    <Compile Include="Objects\ProductDAL.cs" />
+    <Compile Include="ProductMappercs.cs" />
+    <Compile Include="Objects\ProductViewDAL.cs" />
+    <Compile Include="Objects\ContextDAL.cs" />
+    <Compile Include="ProductViewMapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Objects\RoleDAL.cs" />
+    <Compile Include="RoleMapper.cs" />
+    <Compile Include="Objects\SaleDAL.cs" />
+    <Compile Include="SaleMapper.cs" />
+    <Compile Include="Objects\SettingDAL.cs" />
+    <Compile Include="SettingMapper.cs" />
+    <Compile Include="Objects\SupplierDAL.cs" />
+    <Compile Include="SupplierMapper.cs" />
+    <Compile Include="Objects\UserDAL.cs" />
+    <Compile Include="UserMapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

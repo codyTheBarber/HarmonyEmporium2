@@ -1,0 +1,44 @@
+﻿
+
+
+@using Harmony_Emporium.Models;
+@Styles.Render("~/Content/HarmonyEmporium.css")
+@{
+    ViewBag.Title = "Brand Products";
+}
+
+<h2>Products</h2>
+
+
+<div class="ProductFeed">
+    @foreach (ModelProducts SingleProduct in Model.BrandProducts)
+    {
+
+        <div class="FeedComponent">
+            
+                <div class="FeedProductPhoto">
+                    <img src="@Url.Content(SingleProduct.ProductPhotoURL)" />
+                </div>
+                <h3 class="FeedProductName">@SingleProduct.ProductName</h3>
+
+                <div class="FeedPrice">
+                    <strong>$</strong> @SingleProduct.RetailPrice
+                    @if (SingleProduct.Quantity > 0)
+                    {
+                        <a style="padding: 3px" href="@Url.Action("AddItem", "Cart", new { key = SingleProduct.ProductID, Quantity = 1})">Add to cart</a>
+                    }
+                    else
+                    {
+                        <p>Out of Stock</p>
+                    }
+
+                </div>
+
+                @if (SingleProduct.OnSale)
+                {
+                    <strong>ON SALE</strong>
+                }
+            
+        </div>
+    }
+</div>

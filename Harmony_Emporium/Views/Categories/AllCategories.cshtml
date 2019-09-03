@@ -1,0 +1,26 @@
+﻿@using Harmony_Emporium.Models
+@Styles.Render("~/Content/HarmonyEmporium.css")
+@{
+    ViewBag.Title = "Categories";
+}
+
+<h2>Categories</h2>
+
+<div id="CategoriesContainer">
+
+    @foreach (ModelCategories SingleCategory in Model.AllCategories)
+    {
+        <a href="@Url.Action("Products", "Categories", new { key = SingleCategory.CategoryID })">
+            <div class="CategoryComponent">
+                <img class="CategoryPhoto" src="@Url.Content(SingleCategory.CategoryPhotoURL)" />
+                <div class="CategoryName">
+                    <span>@Html.DisplayFor(m => SingleCategory.CategoryName)</span>
+                </div>
+
+            </div>
+
+        </a>
+    }
+
+</div>
+

@@ -1,0 +1,53 @@
+﻿
+@using Harmony_Emporium.Models
+@using Harmony_Emporium.Models.ViewModels
+@Styles.Render("~/Content/HarmonyEmporium.css")
+@{
+    ViewBag.Title = "Home Page";
+    ModelCart cartItem = new ModelCart();
+    int quantity = 1;
+
+
+}
+<h1>@ViewBag.Message</h1>
+
+<h2>Home to the Finest Instruments</h2>
+
+<div class="OnSaleProducts">
+
+</div>
+<div class="ProductFeed">
+    @foreach (ModelProducts SingleProduct in Model.FeedProducts)
+    {
+        //every product in feedproducts list will be rendered in a div
+
+        <div class="FeedComponet" width="200" height="300">
+            <a href="@Url.Action("Product", "Products", new { key = SingleProduct.ProductID })">
+                <div class="FeedProductPhoto">
+                    <img src="@Url.Content(SingleProduct.ProductPhotoURL)" />
+                </div>
+
+                <h3 class="FeedProductName">@Html.DisplayFor(m => SingleProduct.ProductName)</h3>
+                <div class="FeedPrice"><strong>$</strong>@Html.DisplayFor(m => SingleProduct.RetailPrice)</div>
+
+                @if (SingleProduct.OnSale)
+                {
+                    <strong>ON SALE</strong>
+                }
+
+            </a>
+            @if (SingleProduct.Quantity > 0)
+            {
+                <a style="padding: 3px" class="AddToCartbutton" href="@Url.Action("AddItem", "Cart", new { key = SingleProduct.ProductID, Quantity = quantity})">Add to cart</a>
+            }
+            else
+            {
+                <p>Out of Stock</p>
+            }
+
+        </div>
+    }
+</div>
+
+
+

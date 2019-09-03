@@ -1,0 +1,42 @@
+﻿@using Harmony_Emporium.Models
+@Styles.Render("~/Content/HarmonyEmporium.css")
+@{
+    ViewBag.Title = "Product";
+    var m = Model.SingleProduct;
+}
+
+    <div class="ProductPage">
+
+        <div class="ProductName">
+            <h2>@m.ProductName</h2>
+
+            <div class="ProductBrand">
+
+                <img src="@m.BrandPhotoURL" />
+                <span> @m.BrandName</span>
+            </div>
+
+        </div>
+
+        <div class="ProductPhoto">
+            <img src="@m.ProductPhotoURL" />
+        </div>
+
+        <div class="ProductDescription">
+            <p>@m.Description</p>
+        </div>
+
+        <div class="ProductPrice">
+            <h2>@m.RetailPrice</h2>
+            @if (m.Quantity > 0)
+            {
+                <a style="padding: 3px" href="@Url.Action("AddItem", "Cart", new { key = m.ProductID, Quantity = 1})">BuyNow</a>
+            }
+            else
+            {
+                <p>Out of Stock</p>
+            }
+            
+        </div>
+
+    </div>

@@ -1,0 +1,27 @@
+﻿@using Harmony_Emporium.Models
+@Styles.Render("~/Content/HarmonyEmporium.css")
+@{
+    ViewBag.Title = "AllBrands";
+}
+<!--View is a user interface. View displays data from the model to the user and also enables them to modify the data-->
+<!--the AllBrands can be found in the BrandsViewModel-->
+
+<h2>Brands</h2>
+
+<div id="BrandsContainer">
+
+    @foreach (ModelBrands SingleBrand in Model.AllBrands)
+    {
+        <div class="BrandComponent">
+            <a href="@Url.Action("Products", "Brands", new {key = SingleBrand.BrandID})">
+                <img class="BrandPhoto" src="@Url.Content(SingleBrand.BrandPhotoURL)" />
+            </a>
+
+            <div class="BrandWebsite">
+                <a href="@Url.Content(SingleBrand.WebsiteURL)" target="_blank">Visit Website</a>
+            </div>
+
+        </div>
+    }
+
+</div>

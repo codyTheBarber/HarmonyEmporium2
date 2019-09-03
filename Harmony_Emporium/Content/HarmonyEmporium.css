@@ -1,0 +1,139 @@
+﻿/*Home.Index*/
+
+.FeedComponet {
+    margin: 25px;
+    border: 5px solid #ccc;
+    border-radius: 5px;
+    float: left;
+}
+
+.FeedComponet {
+    border: 5px solid#777;
+}
+
+    .FeedComponet img {
+        width: 100%;
+        height: 300px;
+    }
+
+    .FeedComponet .FeedProductPhoto {
+        width: 350px;
+        margin: auto;
+        border: 5px solid #ccc;
+        border-radius: 5px;
+        border-radius: 10px;
+    }
+
+/* Brands/View*/
+
+.BrandComponent {
+    width: 90%;
+    margin: 10px;
+    border: 3px solid #ccc;
+}
+
+    .BrandComponent .BrandPhoto {
+        width: 100%;
+        height: 400px;
+    }
+
+    .BrandComponent .BrandWebsite {
+        padding: 15px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+/*Categories view*/
+.CategoryComponent {
+    width: 250px;
+    height: 300px;
+    border: 5px solid #000000;
+    margin: 25px;
+    border-radius: 15px;
+    float: left;
+}
+
+    .CategoryComponent .CategoryPhoto {
+        margin-top: 5%;
+        margin-left: 5%;
+        width: 90%;
+        height: 200px;
+    }
+
+    .CategoryComponent .CategoryName {
+        text-align: center;
+        font-weight: bold;
+        font-size: 35px;
+    }
+
+/*Products*/
+
+.ProductPage {
+    width: 90%;
+    margin: 15px;
+    padding: 15px;
+    border: 15px solid #4d4545;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+    .ProductPage .ProductDescription {
+        width: 400px;
+        margin: 5px;
+        padding: 5px;
+        border: 2px solid #000000;
+    }
+
+    .ProductPage .ProductName {
+        text-align: center;
+        margin-top: 3%;
+        margin-right: 4%;
+        border: 5px solid #000000;
+        font-weight: bold;
+        height: 300px;
+        width: 50%;
+        float: right;
+    }
+
+    .ProductPage .ProductPhoto {
+        border: 4px solid #000000;
+        border-radius: 10px;
+        margin-top: 3%;
+        margin-left: 4%;
+        width: 30%;
+        height: 400px;
+    }
+
+        .ProductPage .ProductPhoto img {
+            width: 100%;
+            height: 100%;
+        }
+
+    .ProductPage .ProductName .ProductBrand {
+        text-align: center;
+        margin: auto;
+        border: 2px solid #000000;
+        width: 70%;
+        height: 50%;
+    }
+
+    .ProductPage .ProductBrand img {
+        width: 100%;
+        height: 80%;
+    }
+
+ProductPage.ProductPrice {
+    float: right;
+}
+
+/*LayOUT*/
+
+footer {
+    margin-top: 25px;
+    position: relative;
+}
+
+    footer .year {
+        position: absolute;
+        bottom: 0;
+    }

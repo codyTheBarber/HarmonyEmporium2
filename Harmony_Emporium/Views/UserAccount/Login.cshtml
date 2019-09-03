@@ -1,0 +1,43 @@
+﻿@model Harmony_Emporium.Models.ViewModels.LoginViewModel
+@using Harmony_Emporium.Models
+
+@{
+    ViewBag.Title = "Login";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<div>
+    @using (Html.BeginForm("Login", "UserAccount", FormMethod.Post))
+    {
+        <div class="form-group">
+
+            <table>
+                <tr>
+                    <td>
+                        <span>Email</span>
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Email)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>Password</span>
+                    </td>
+                    <td>
+                        @Html.PasswordFor(m => m.Password)
+                    </td>
+                </tr>
+                
+
+
+            </table>
+            <input type="submit" value="Submit" />
+        </div>
+
+    }
+
+
+</div>
+

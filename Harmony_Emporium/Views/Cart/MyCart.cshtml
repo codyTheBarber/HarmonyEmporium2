@@ -1,0 +1,43 @@
+﻿@using Harmony_Emporium.Models;
+@using Harmony_Emporium.Models.ViewModels;
+
+@{
+    ViewBag.Title = "MyCart";
+    decimal totalPrice = 0;
+}
+
+<h2>MyCart</h2>
+<!--setting error message if limit is reached  -->
+@if (ViewBag.Limit)
+{
+    <h4 class="text-danger">A previous amount entered was over the amount available</h4>
+}
+<div class="CartProducts">
+    @foreach (ModelCart cartProduct in Model.Cart)
+    {
+        if (cartProduct.OnSale)
+        {
+            totalPrice = totalPrice + (cartProduct.WholeSalePrice * cartProduct.CartItemQuantity);
+        }
+        else
+        {
+            totalPrice = totalPrice + (cartProduct.RetailPrice * cartProduct.CartItemQuantity);
+        }
+        using (Html.BeginForm("UpdateQuanity", "Cart", FormMethod.Post))
+        {
+            @Html.HiddenFor(m => cartProduct.ProductID)
+            @Html.HiddenFor(m => cartProduct.UserID)
+            @Html.HiddenFor(m => cartProduct.InStockQuantity)
+            <div>
+                <p>
+                    @cartProduct.ProductName | @Html.EditorFor(m => cartProduct.CartItemQuantity)
+                    <input type="submit" value="update" class="btn btn-primary">
+                    <a class="btn btn-danger" href="@Url.Action("RemoveItem","Cart",new { UserID = cartProduct.UserID,ProductID = cartProduct.ProductID })">Delete</a>
+                </p>
+            </div>
+        }
+    }
+    <p><strong>the total price is @totalPrice</strong></p>
+    <a href="@Url.Action("ClearCart", "Cart")">Clear cart</a>
+</div>
+
