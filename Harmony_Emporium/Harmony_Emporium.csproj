@@ -202,6 +202,7 @@
     <Content Include="Views\Categories\Products.cshtml" />
     <Content Include="Views\Cart\MyCart.cshtml" />
     <Content Include="Views\UserAdministration\AllUsers.cshtml" />
+    <Content Include="Views\Products\EditProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

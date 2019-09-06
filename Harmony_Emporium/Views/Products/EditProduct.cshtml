@@ -1,0 +1,66 @@
+﻿@using Harmony_Emporium.Models.ViewModels
+@model  Harmony_Emporium.Models.ViewModels.ProductsViewModel
+@Styles.Render("~/Content/HarmonyEmporium.css")
+@{
+    ViewBag.Title = "Edit Product";
+
+}
+
+<div class="EditProductPage">
+    @using (Html.BeginForm("EditProduct", "Products", FormMethod.Post))
+    {
+        <div>
+
+            <div>
+                @Html.LabelFor(m => m.SingleProduct.SupplierID)
+                @Html.TextBoxFor(m => m.SingleProduct.SupplierID)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.SingleProduct.CategoryID)
+                @Html.TextBoxFor(m => m.SingleProduct.CategoryID)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.SingleProduct.BrandID)
+                @Html.TextBoxFor(m => m.SingleProduct.BrandID)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.SingleProduct.ProductName)
+                @Html.TextBoxFor(m => m.SingleProduct.ProductName)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.SingleProduct.RetailPrice)
+                @Html.TextBoxFor(m => m.SingleProduct.RetailPrice)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.SingleProduct.WholeSalePrice)
+                @Html.TextBoxFor(m => m.SingleProduct.WholeSalePrice)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.SingleProduct.OnSale)
+                @Html.TextBoxFor(m => m.SingleProduct.OnSale)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.SingleProduct.Quantity)
+                @Html.TextBoxFor(m => m.SingleProduct.Quantity)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.SingleProduct.Color)
+                @Html.TextBoxFor(m => m.SingleProduct.Color)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.SingleProduct.Description)
+                @Html.TextBoxFor(m => m.SingleProduct.Description)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.SingleProduct.ProductCreateDate)
+                @Html.TextBoxFor(m => m.SingleProduct.ProductCreateDate)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.SingleProduct.ProductPhotoURL)
+                @Html.TextBoxFor(m => m.SingleProduct.ProductPhotoURL)
+            </div>
+            <input  type="submit" value="Submit" />
+        </div>
+    }
+
+</div>

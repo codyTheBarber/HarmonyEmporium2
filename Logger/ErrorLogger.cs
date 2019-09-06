@@ -17,7 +17,7 @@ namespace Logger
         //make it private we dont want people to access except us readonly meanes the value cant be changed 
         // connection string is a foreign key relationship to our database
         //so we cant actually do anything with the string  but is is in the address that lives in our database
-        
+
         private readonly string ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
         // exception is there where our code breaks we cacn get information from it
         //Exception itself lives within the c# at least the turkoise colored they have objects and methods in them

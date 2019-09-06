@@ -117,9 +117,33 @@ namespace Harmony_Emporium
             }
             return returnProducts;
         }
-        public ModelProducts Map(DataProducts mProduct)
+        public ModelProducts Map(DataProducts dProduct)
         {
             ModelProducts returnProduct = new ModelProducts();
+
+            returnProduct.ProductID = dProduct.ProductID;
+            returnProduct.ProductName = dProduct.ProductName;
+            returnProduct.SupplierID = dProduct.SupplierID;
+            returnProduct.SupplierName = dProduct.SupplierName;
+            returnProduct.CategoryID = dProduct.CategoryID;
+            returnProduct.CategoryName = dProduct.CategoryName;
+            returnProduct.BrandID = dProduct.BrandID;
+            returnProduct.BrandName = dProduct.BrandName;
+            returnProduct.RetailPrice = dProduct.RetailPrice;
+            returnProduct.WholeSalePrice = dProduct.WholeSalePrice;
+            returnProduct.OnSale = dProduct.OnSale;
+            returnProduct.Quantity = dProduct.Quantity;
+            returnProduct.Color = dProduct.Color;
+            returnProduct.Description = dProduct.Description;
+            returnProduct.ProductCreateDate = dProduct.ProductCreateDate;
+            returnProduct.ProductPhotoURL = dProduct.ProductPhotoURL;
+            returnProduct.BrandPhotoURL = dProduct.BrandPhotoURL;
+
+            return returnProduct;
+        }
+        public DataProducts Map(ModelProducts mProduct)
+        {
+            DataProducts returnProduct = new DataProducts();
 
             returnProduct.ProductID = mProduct.ProductID;
             returnProduct.ProductName = mProduct.ProductName;

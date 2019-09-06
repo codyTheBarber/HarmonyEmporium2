@@ -18,3 +18,4 @@ namespace Harmony_Emporium.Models.ViewModels
         }
     }
 }
+//roleID is the foriegn key

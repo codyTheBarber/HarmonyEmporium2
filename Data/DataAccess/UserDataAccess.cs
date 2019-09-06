@@ -32,14 +32,14 @@ namespace Data
                     using (SqlCommand command = new SqlCommand("dbo.sp_UserCreate", connection))
                     {
                         
-                        command.CommandType = System.Data.CommandType.StoredProcedure;
+                        command.CommandType = CommandType.StoredProcedure;
                        
                         command.Parameters.AddWithValue("@Email", user.Email);
-                        command.Parameters.AddWithValue("Hash", user.Hash);
+                        command.Parameters.AddWithValue("@Hash", user.Hash);
                         command.Parameters.AddWithValue("@Salt", user.Salt);
                         command.Parameters.AddWithValue("@Address", user.Address);
                         command.Parameters.AddWithValue("@FirstName", user.FirstName);
-                        command.Parameters.AddWithValue("LastName", user.LastName);
+                        command.Parameters.AddWithValue("@LastName", user.LastName);
                         command.Parameters.AddWithValue("@Birthday", DateTime.Now);
                         command.Parameters.AddWithValue("@Phone", user.Phone);
                         command.Parameters.AddWithValue("@AccountCreateDate", DateTime.Now);                       
@@ -116,14 +116,11 @@ namespace Data
             {
                 Logger.LogError(exception);
             }
-
             return allUsers;
         }
-        public bool GetUser(DataUsers user)
- 
+        public bool GetUser(DataUsers user) 
         {
             bool noError = true;
-
             try
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
@@ -132,7 +129,7 @@ namespace Data
 
                     using (SqlCommand command = new SqlCommand("dbo.sp_UserGetByID", connection))
                     {
-                        command.CommandType = System.Data.CommandType.StoredProcedure;
+                        command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@UserID", user.UserID);
 
 
@@ -149,8 +146,7 @@ namespace Data
             return noError;
         }
         //Get Hash and Salt from User by Email for Password Validation
-        public DataUsers GetCredentials(string Email)//TAKES in UserEmail,returns DataUser
-     
+        public DataUsers GetCredentials(string Email)//TAKES in UserEmail,returns DataUser     
         {
             DataUsers userByEmail = new DataUsers();//new instance of DataUsers
 
@@ -227,7 +223,7 @@ namespace Data
 
                     using (SqlCommand command = new SqlCommand("dbo.sp_UserUpdatePasswordByID", connection))
                     {
-                        command.CommandType = System.Data.CommandType.StoredProcedure;                        
+                        command.CommandType = CommandType.StoredProcedure;                        
                         command.Parameters.AddWithValue("@UserID", user.UserID);
                         command.Parameters.AddWithValue("@Hash", user.Hash);
                         command.Parameters.AddWithValue("@Salt", user.Salt);     
@@ -251,7 +247,7 @@ namespace Data
                 {
                     using (SqlCommand command = new SqlCommand("dbo.sp_UserUpdateRole", connection))
                     {                      
-                        command.CommandType = System.Data.CommandType.StoredProcedure;                  
+                        command.CommandType = CommandType.StoredProcedure;                  
                         command.Parameters.AddWithValue("@UserID", user.UserID);
                         command.Parameters.AddWithValue("@RoleID", user.RoleID);
                        

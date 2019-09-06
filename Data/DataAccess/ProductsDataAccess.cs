@@ -252,45 +252,27 @@ namespace Data.DataAccess
 
 
 
-        public bool ProductsDeleteByID(DataProducts products)
+        public bool ProductsDeleteByID(int productID)
         {
             bool noError = true;
-
             try
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-
-
                     using (SqlCommand command = new SqlCommand("dbo.sp_ProductsDeleteByID", connection))
                     {
-
-                        command.CommandType = System.Data.CommandType.StoredProcedure;
-
-                        command.Parameters.AddWithValue("@SupplierID", products.SupplierID);
-                        command.Parameters.AddWithValue("@CategoryID", products.CategoryID);
-                        command.Parameters.AddWithValue("@BrandID", products.BrandID);
-                        command.Parameters.AddWithValue("@ProductName", products.ProductName);
-                        command.Parameters.AddWithValue("@RetailPrice", products.RetailPrice);
-                        command.Parameters.AddWithValue("@WholeSalePrice", products.WholeSalePrice);
-                        command.Parameters.AddWithValue("@OnSale", products.OnSale);
-                        command.Parameters.AddWithValue("@Quantity", products.Quantity);
-                        command.Parameters.AddWithValue("@Color", products.Color);
-                        command.Parameters.AddWithValue("@Desciption", products.Description);
-                        command.Parameters.AddWithValue("@ProductCreateDate", products.ProductCreateDate);
-                        command.Parameters.AddWithValue("@ProductPhotoURL", products.ProductPhotoURL);
-
-
-
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@ProductID", productID);
+                        connection.Open();
                         command.ExecuteNonQuery();
                     }
                 }
             }
             catch (Exception exception)
             {
+                noError = false;
                 Logger.LogError(exception);
             }
-
             return noError;
 
         }
@@ -304,7 +286,7 @@ namespace Data.DataAccess
                     using (SqlCommand command = new SqlCommand("dbo.sp_ProductCreate", connection))
                     {
 
-                        command.CommandType = System.Data.CommandType.StoredProcedure;
+                        command.CommandType = CommandType.StoredProcedure;
 
                         command.Parameters.AddWithValue("@SupplierID", product.SupplierID);
                         command.Parameters.AddWithValue("@CategoryID", product.CategoryID);
@@ -325,6 +307,7 @@ namespace Data.DataAccess
             }
             catch (Exception exception)
             {
+                noError = false;
                 Logger.LogError(exception);
             }
             return noError;

@@ -23,7 +23,6 @@ namespace Harmony_Emporium.Controllers
         }
         public ActionResult DeleteUser(int UserID)
         {
-
             UsersDAL.UserDeleteByID(UserID);
             return RedirectToAction("AllUsers");
         }
@@ -32,6 +31,5 @@ namespace Harmony_Emporium.Controllers
             UsersDAL.UpdateRole(mapper.Map(viewModel.SingleUser));
             return RedirectToAction("AllUsers");
         }
-
     }
 }
