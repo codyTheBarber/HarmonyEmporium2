@@ -47,6 +47,7 @@
     <Compile Include="DataAccess\CategoriesDataAccess.cs" />
     <Compile Include="DataAccess\HashHistoryDataAccess.cs" />
     <Compile Include="DataAccess\RolesDataAccess.cs" />
+    <Compile Include="DataAccess\SupplierDataAccess.cs" />
     <Compile Include="Objects\DataBrands.cs" />
     <Compile Include="Objects\DataCartItems.cs" />
     <Compile Include="Objects\DataCategories.cs" />

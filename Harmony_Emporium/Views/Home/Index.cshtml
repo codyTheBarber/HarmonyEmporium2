@@ -7,11 +7,19 @@
     ModelCart cartItem = new ModelCart();
     int quantity = 1;
 
-
 }
 <h1>@ViewBag.Message</h1>
 
-<h2>Home to the Finest Instruments</h2>
+@if (Session["UserID"] == null)
+{
+    <h2>Home to the Finest Instruments</h2>
+}
+else
+{    string name = Session["Name"].ToString();
+    <h2>Welcome @name!</h2>
+}
+
+
 
 <div class="OnSaleProducts">
 

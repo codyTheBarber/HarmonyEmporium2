@@ -1,0 +1,42 @@
+﻿@using Harmony_Emporium.Models.ViewModels
+@model Harmony_Emporium.Models.ViewModels.SupplierViewModel
+@Styles.Render("~/Content/HarmonyEmporium.css")
+@{
+    ViewBag.Title = "CreateSuppliers";
+}
+
+<h2>Create Supplier</h2>
+
+<div class="CreateProductPage">
+    @using (Html.BeginForm("CreateSupplier", "Suppliers", FormMethod.Post))
+    {
+        <div class="createProductForm">
+
+            <div>
+                @Html.Label("Supplier Name")
+                @Html.TextBoxFor(m => m.SingleSupplier.SupplierName)
+            </div>
+            <div>
+                @Html.Label("Contact Name")
+                @Html.TextBoxFor(m => m.SingleSupplier.ContactName)
+            </div>
+            <div>
+                @Html.Label("Contact Email")
+                @Html.TextBoxFor(m => m.SingleSupplier.ContactEmail)
+            </div>
+            <div>
+                @Html.Label("Address")
+                @Html.TextBoxFor(m => m.SingleSupplier.Address)
+            </div>
+            <div>
+                @Html.Label("Website")
+                @Html.TextBoxFor(m => m.SingleSupplier.WebsiteURL)
+            </div>
+            <div>
+                @Html.Label("PhotoURL")
+                @Html.TextBoxFor(m => m.SingleSupplier.SuppliersPhotoURL)
+            </div>
+            <input type="submit" value="Submit" />
+        </div>
+    }
+</div>

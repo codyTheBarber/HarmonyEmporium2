@@ -78,10 +78,11 @@ namespace Harmony_Emporium.Controllers
 
                 if (loginLogic.ValidatePassword(viewModel.SingleUser.Hash, userAccount.Hash))
                 {
+                    var u = viewModel.SingleUser = mapper.Map(UsersDAL.GetUser(userAccount.UserID));
                     Session["UserID"] = userAccount.UserID;
                     Session["RoleID"] = userAccount.RoleID;
                     Session["Email"] = userAccount.Email;
-                    Session["Cart"] = mapper.Map(CartDAL.GetCartItems((int)Session["UserID"]));
+                    Session["Name"] = u.FirstName;
 
                     return RedirectToAction("Index", "Home");
                 }

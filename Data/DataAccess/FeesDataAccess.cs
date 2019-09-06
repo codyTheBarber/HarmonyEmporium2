@@ -9,7 +9,7 @@ using System.Configuration;
 using Logger;
 using Data.Objects;
 
-namespace Data
+namespace Data.DataAccess
 {
     public class FeesDataAccess
     {
@@ -119,6 +119,35 @@ namespace Data
             }
 
             return noError;
+        }
+        public DataFees GetActiveFee()
+        {
+            DataFees dFee = new DataFees();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    using (SqlCommand command = new SqlCommand("dbo.sp_FeeGetByActiveStatus", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        connection.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            dFee.FeeID = reader.GetInt32(0);
+                            dFee.Tax = reader.GetDecimal(1);
+                            dFee.ShippingFee = reader.GetDecimal(2);
+                            dFee.RateCreationDate = reader.GetDateTime(3);
+                        }
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                Logger.LogError(exception);
+            }
+            return dFee;
         }
         public List<DataFees> FeeGetAll()
         {

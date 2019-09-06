@@ -13,12 +13,15 @@ namespace Logic
         public decimal CalculateTotal(List<LogicCart> cartProducts, LogicFees fees)
         {
             decimal total = 0;
-
+            if (cartProducts == null)
+            {
+                return fees.ShippingFee;
+            }
             foreach (LogicCart product in cartProducts)
             {
                 total += (product.RetailPrice *= product.CartItemQuantity);
             }            
-            total *= fees.Tax;
+            total *=(1+ fees.Tax);
             total += fees.ShippingFee;
             return total;
         }

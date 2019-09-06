@@ -1,6 +1,4 @@
 ﻿@using Harmony_Emporium.Models;
-@using Harmony_Emporium.Models.ViewModels;
-
 @{
     ViewBag.Title = "MyCart";
     decimal totalPrice = 0;
@@ -10,7 +8,7 @@
 <!--setting error message if limit is reached  -->
 @if (ViewBag.Limit)
 {
-    <h4 class="text-danger">A previous amount entered was over the amount available</h4>
+    <h4 class="text-danger">You entered an amount that was greater than what is in stock.</h4>
 }
 <div class="CartProducts">
     @foreach (ModelCart cartProduct in Model.Cart)

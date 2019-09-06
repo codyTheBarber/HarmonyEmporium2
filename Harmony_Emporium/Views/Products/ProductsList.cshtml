@@ -1,0 +1,53 @@
+﻿@using Harmony_Emporium.Models
+@Styles.Render("~/Content/HarmonyEmporium.css")
+@{
+    ViewBag.Title = "All Products";
+}
+<h1>@ViewBag.Message</h1>
+
+
+<td>@Html.ActionLink("Add Product", "CreateProduct", "Products", htmlAttributes: new { @class = "btn btn-default" })</td>
+
+<div class="ProductList">
+
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Supplier</th>
+            <th>Category</th>
+            <th>Retail</th>
+            <th>WholeSale</th>
+            <th>On Sale</th>
+            <th>Creation Date</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (ModelProducts SingleProduct in Model.AllProducts)
+        {
+    <tr>
+        <td>@SingleProduct.ProductID</td>
+        <td>@SingleProduct.ProductName</td>
+        <td>@SingleProduct.SupplierName</td>
+        <td>@SingleProduct.CategoryName</td>
+        <td>@SingleProduct.RetailPrice</td>
+        <td>@SingleProduct.WholeSalePrice</td>
+        <td>@SingleProduct.OnSale</td>
+        <td>@SingleProduct.ProductCreateDate</td>
+        @switch ((int)Session["RoleID"])
+        {
+            case 3:
+                <td>@Html.ActionLink("Delete", "DeleteProduct", "Products", routeValues: new { productID = SingleProduct.ProductID }, htmlAttributes: new { @class = "btn btn-danger" })</td>
+                <td>@Html.ActionLink("Update", "EditProduct", "Products", routeValues: new { key = SingleProduct.ProductID }, htmlAttributes: new { @class = "btn btn-primary" })</td>
+                break;
+            case 4:
+                <td>@Html.ActionLink("Delete", "DeleteProduct", "Products", routeValues: new { productID = SingleProduct.ProductID }, htmlAttributes: new { @class = "btn btn-danger" })</td>
+                <td>@Html.ActionLink("Update", "EditProduct", "Products", routeValues: new { key = SingleProduct.ProductID }, htmlAttributes: new { @class = "btn btn-primary" })</td>
+                break;
+        }
+
+    </tr>
+        }
+    </table>
+</div>

@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,9 +15,9 @@ namespace Data.DataAccess
         private readonly string ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
         static ErrorLogger Logger = new ErrorLogger();
 
-        public bool ProductsUpdateByID(int ProductID)
+        public bool ProductsUpdateByID(DataProducts product)
         {
-            DataProducts product = new DataProducts();
+           
             bool noError = true;
             try
             {

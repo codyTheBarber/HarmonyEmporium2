@@ -118,23 +118,34 @@ namespace Data
             }
             return allUsers;
         }
-        public bool GetUser(DataUsers user) 
+        public DataUsers GetUser(int UserID) 
         {
-            bool noError = true;
+            DataUsers dUser = new DataUsers();
+
             try
             {
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
 
-                    using (SqlCommand command = new SqlCommand("dbo.sp_UserGetByID", connection))
+                    using (SqlCommand command = new SqlCommand("dbo.sp_UsersGetByID", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@UserID", user.UserID);
+                        command.Parameters.AddWithValue("@UserID", UserID);
+                        SqlDataReader reader = command.ExecuteReader();
 
-
-                        connection.Open();
-                        command.ExecuteNonQuery();
+                        while (reader.Read())
+                        {
+                            dUser.UserID = reader.GetInt32(0);
+                            dUser.RoleID = reader.GetInt32(1);
+                            dUser.Email = reader.GetString(2);
+                            dUser.Address = reader.GetString(3);
+                            dUser.FirstName = reader.GetString(4);
+                            dUser.LastName = reader.GetString(5);
+                            dUser.Birthday = reader.GetDateTime(6);
+                            dUser.Phone = reader.GetString(7);
+                            dUser.AccountCreateDate = reader.GetDateTime(8);
+                        }
                     }
                 }
             }
@@ -143,7 +154,7 @@ namespace Data
                 Logger.LogError(exception);
             }
 
-            return noError;
+            return dUser;
         }
         //Get Hash and Salt from User by Email for Password Validation
         public DataUsers GetCredentials(string Email)//TAKES in UserEmail,returns DataUser     

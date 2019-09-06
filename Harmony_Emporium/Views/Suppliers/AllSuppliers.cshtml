@@ -1,0 +1,53 @@
+﻿@using Harmony_Emporium.Models
+@Styles.Render("~/Content/HarmonyEmporium.css")
+@{
+    ViewBag.Title = "All Products";
+}
+<h1>@ViewBag.Message</h1>
+
+
+<td>@Html.ActionLink("Add Supplier", "CreateSupplier", "Suppliers", htmlAttributes: new { @class = "btn btn-default" })</td>
+
+<div class="ProductList">
+
+
+    <table>
+        <tr>
+            <th>Supplier</th>
+            <th>Contact Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Website</th>
+            <th>Photo</th>
+            <th>Creation Date</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (ModelSuppliers SingleSupplier in Model.AllSuppliers)
+        {
+            <tr>
+                <td>@SingleSupplier.SupplierName</td>
+                <td>@SingleSupplier.ContactName</td>
+                <td>@SingleSupplier.ContactEmail</td>
+                <td>@SingleSupplier.Address</td>
+                <td>@SingleSupplier.WebsiteURL</td>
+                <td> <img width="30" height="30" src="@Url.Content(SingleSupplier.SuppliersPhotoURL)" /></td>
+                <td>@SingleSupplier.SupplierCreateDate</td>
+                @switch ((int)Session["RoleID"])
+                {
+                    case 2:
+                        <td>@Html.ActionLink("Update", "EditSupplier", "Suppliers", routeValues: new { key = SingleSupplier.SupplierID }, htmlAttributes: new { @class = "btn btn-primary" })</td>
+                        break;
+                    case 3:
+                        <td>@Html.ActionLink("Delete", "DeleteSupplier", "Suppliers", routeValues: new { key = SingleSupplier.SupplierID }, htmlAttributes: new { @class = "btn btn-danger" })</td>
+                        <td>@Html.ActionLink("Update", "EditSupplier", "Suppliers", routeValues: new { key = SingleSupplier.SupplierID }, htmlAttributes: new { @class = "btn btn-primary" })</td>
+                        break;
+                    case 4:
+                        <td>@Html.ActionLink("Delete", "DeleteSupplier", "Suppliers", routeValues: new { key = SingleSupplier.SupplierID }, htmlAttributes: new { @class = "btn btn-danger" })</td>
+                        <td>@Html.ActionLink("Update", "EditSupplier", "Suppliers", routeValues: new { key = SingleSupplier.SupplierID }, htmlAttributes: new { @class = "btn btn-primary" })</td>
+                        break;
+                }
+            </tr>
+        }
+    </table>
+</div>m.

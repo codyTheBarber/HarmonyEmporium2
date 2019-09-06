@@ -54,13 +54,13 @@ namespace Harmony_Emporium
 
                 user.UserID = dUser.UserID;
                 user.RoleID = dUser.RoleID;
-                user.Email = dUser.Email;               
+                user.Email = dUser.Email;
                 user.Address = dUser.Address;
                 user.FirstName = dUser.FirstName;
                 user.LastName = dUser.LastName;
                 user.Birthday = dUser.Birthday;
                 user.Phone = dUser.Phone;
-                user.AccountCreateDate = dUser.AccountCreateDate;               
+                user.AccountCreateDate = dUser.AccountCreateDate;
 
                 returnUsers.Add(user);
             }
@@ -298,5 +298,111 @@ namespace Harmony_Emporium
 
         #endregion
 
+        #region Supplier
+
+        public List<ModelSuppliers> Map(List<DataSuppliers> allSuppliers)
+        {
+            List<ModelSuppliers> returnSuppliers = new List<ModelSuppliers>();
+            foreach (DataSuppliers dSupplier in allSuppliers)
+            {
+                ModelSuppliers supplier = new ModelSuppliers();
+
+                supplier.SupplierID = dSupplier.SupplierID;
+                supplier.SupplierName = dSupplier.SupplierName;
+                supplier.ContactName = dSupplier.ContactName;
+                supplier.ContactEmail = dSupplier.ContactEmail;
+                supplier.Address = dSupplier.Address;
+                supplier.SupplierCreateDate = dSupplier.SupplierCreateDate;
+                supplier.SuppliersPhotoURL = dSupplier.SuppliersPhotoURL;
+                supplier.WebsiteURL = dSupplier.WebsiteURL;
+
+                returnSuppliers.Add(supplier);
+            }
+            return returnSuppliers;
+        }
+        public ModelSuppliers Map(DataSuppliers dSupplier)
+        {
+            ModelSuppliers returnSupplier = new ModelSuppliers();
+
+            returnSupplier.SupplierID = dSupplier.SupplierID;
+            returnSupplier.SupplierName = dSupplier.SupplierName;
+            returnSupplier.ContactName = dSupplier.ContactName;
+            returnSupplier.SupplierName = dSupplier.SupplierName;
+            returnSupplier.ContactEmail = dSupplier.ContactEmail;
+            returnSupplier.Address = dSupplier.Address;
+            returnSupplier.SupplierCreateDate = dSupplier.SupplierCreateDate;
+            returnSupplier.SuppliersPhotoURL = dSupplier.SuppliersPhotoURL;
+            returnSupplier.WebsiteURL = dSupplier.WebsiteURL;     
+
+            return returnSupplier;
+        }
+        public DataSuppliers Map(ModelSuppliers mSupplier)
+        {
+            DataSuppliers returnSupplier = new DataSuppliers();
+
+             returnSupplier.SupplierID = mSupplier.SupplierID;
+             returnSupplier.SupplierName = mSupplier.SupplierName;
+             returnSupplier.ContactName = mSupplier.ContactName;
+             returnSupplier.SupplierName = mSupplier.SupplierName;
+             returnSupplier.ContactEmail = mSupplier.ContactEmail;
+             returnSupplier.Address = mSupplier.Address;
+             returnSupplier.SupplierCreateDate = mSupplier.SupplierCreateDate;
+             returnSupplier.SuppliersPhotoURL = mSupplier.SuppliersPhotoURL;
+             returnSupplier.WebsiteURL = mSupplier.WebsiteURL;     
+
+
+            return returnSupplier;
+        }
+
+
+        #endregion
+
+        #region Fees
+        public DataFees Map(ModelFees mFee)
+        {
+            DataFees dFee = new DataFees();
+            dFee.FeeID = mFee.FeeID;
+            dFee.Tax = mFee.ShippingFee;
+            dFee.ShippingFee = mFee.ShippingFee;
+            dFee.RateCreationDate= mFee.RateCreationDate;
+            dFee.Active= mFee.Active;
+
+            return dFee;
+        }
+        public ModelFees Map(DataFees dFee)
+        {
+            ModelFees mFee = new ModelFees();
+            mFee.FeeID = dFee.FeeID;
+            mFee.Tax = dFee.ShippingFee;
+            mFee.ShippingFee = dFee.ShippingFee;
+            mFee.RateCreationDate = dFee.RateCreationDate;
+            mFee.Active = dFee.Active;
+
+            return mFee;
+        }
+        public List<ModelFees> Map(List<DataFees> dataFees)
+        {
+            List<ModelFees> returnFees = new List<ModelFees>();
+
+            foreach (DataFees dFee in dataFees)
+            {
+                ModelFees mFee = new ModelFees();
+
+                mFee.FeeID = dFee.FeeID;
+                mFee.Tax = dFee.ShippingFee;
+                mFee.ShippingFee = dFee.ShippingFee;
+                mFee.RateCreationDate = dFee.RateCreationDate;
+                mFee.Active = dFee.Active;
+                
+                returnFees.Add(mFee);
+            }
+
+            return returnFees;
+        }
+
+
+
+
+        #endregion
     }
 }

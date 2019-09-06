@@ -38,7 +38,7 @@
                             break;
                         //regular user
                         case 1:
-
+                            <li>@Html.ActionLink("Products", "ProductsList", "Products")</li>
                             <li>@Html.ActionLink("Brands", "AllBrands", "Brands")</li>
                             <li>@Html.ActionLink("Categories", "AllCategories", "Categories")</li>
                             <li>@Html.ActionLink("Cart", "MyCart", "Cart", new { Limit = false }, null)</li>
@@ -47,6 +47,7 @@
                             break;
                         //Power user
                         case 2:
+                            <li>@Html.ActionLink("Products", "ProductsList", "Products")</li>
                             <li>@Html.ActionLink("Brands", "AllBrands", "Brands")</li>
                             <li>@Html.ActionLink("Categories", "AllCategories", "Categories")</li>
                             <li>@Html.ActionLink("Cart", "MyCart", "Cart", new { Limit = false }, null)</li>
@@ -55,9 +56,10 @@
                             break;
                         //administrator
                         case 3:
+                            <li>@Html.ActionLink("Products", "ProductsList", "Products")</li>
                             <li>@Html.ActionLink("Brands", "AllBrands", "Brands")</li>
                             <li>@Html.ActionLink("Categories", "AllCategories", "Categories")</li>
-                            <li>@Html.ActionLink("Suppliers", "Suppliers", "Index")</li>
+                            <li>@Html.ActionLink("Suppliers", "AllSuppliers", "Suppliers")</li>
                             <li>@Html.ActionLink("Users", "AllUsers", "UserAdministration")</li>
                             <li>@Html.ActionLink("LogOut", "LogOut", "UserAccount")</li>
                             break;

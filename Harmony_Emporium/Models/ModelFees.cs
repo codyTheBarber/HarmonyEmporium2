@@ -11,9 +11,6 @@ namespace Harmony_Emporium.Models
         public decimal Tax { get; set; }
         public decimal ShippingFee { get; set; }
         public DateTime RateCreationDate { get; set; }
-
         public bool Active { get; set; }
-
-
     }
 }

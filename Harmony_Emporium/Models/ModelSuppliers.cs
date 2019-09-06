@@ -13,7 +13,7 @@ namespace Harmony_Emporium.Models
         public string ContactEmail { get; set; }
         public string Address { get; set; }
         public DateTime SupplierCreateDate { get; set; }
-        public string SupplierPhotoURL { get; set; }
+        public string SuppliersPhotoURL { get; set; }
         public string WebsiteURL { get; set; }
 
     }

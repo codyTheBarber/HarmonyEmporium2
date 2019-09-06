@@ -151,6 +151,7 @@
     <Compile Include="Models\ModelUser.cs" />
     <Compile Include="Models\ViewModels\ProductsViewModel.cs" />
     <Compile Include="Models\ViewModels\RegisterViewModel.cs" />
+    <Compile Include="Models\ViewModels\SupplierViewModel.cs" />
     <Compile Include="Models\ViewModels\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -196,18 +197,24 @@
     <Content Include="Views\Brands\AllBrands.cshtml" />
     <Content Include="Views\Settings.cshtml" />
     <Content Include="Views\Categories\AllCategories.cshtml" />
-    <Content Include="Views\Products\AllProducts.cshtml" />
+    <Content Include="Views\Products\ProductsList.cshtml" />
     <Content Include="Views\Products\Product.cshtml" />
     <Content Include="Views\Brands\Products.cshtml" />
     <Content Include="Views\Categories\Products.cshtml" />
     <Content Include="Views\Cart\MyCart.cshtml" />
     <Content Include="Views\UserAdministration\AllUsers.cshtml" />
     <Content Include="Views\Products\EditProduct.cshtml" />
+    <Content Include="Views\Products\CreateProduct.cshtml" />
+    <Content Include="Views\Suppliers\AllSuppliers.cshtml" />
+    <Content Include="Views\Suppliers\CreateSupplier.cshtml" />
+    <Content Include="Views\Suppliers\EditSupplier.cshtml" />
+    <Content Include="Views\Suppliers\SupplierDetails.cshtml" />
+    <Content Include="Views\Cart\CheckOut.cshtml" />
+    <Content Include="Views\Products\AllProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Reports\" />
-    <Folder Include="Views\Suppliers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

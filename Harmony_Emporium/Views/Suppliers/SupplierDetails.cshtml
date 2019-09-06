@@ -1,0 +1,36 @@
+﻿@using Harmony_Emporium.Models
+@Styles.Render("~/Content/HarmonyEmporium.css")
+@{
+    ViewBag.Title = "Supplier Details";
+    var s = Model.SingleSupplier;
+}
+
+<div class="SuppliersPage">
+
+    <div class="SupplierDetails">
+        <h2>@s.SupplierName</h2>
+
+        <div>
+            <img src="@Url.Content(s.SupplierPhotoURL)" />
+        </div>
+
+    </div>
+
+    <div class="ProductDescription">
+        <p>@m.Description</p>
+    </div>
+
+    <div class="ProductPrice">
+        <h2>@m.RetailPrice</h2>
+        @if (m.Quantity > 0)
+        {
+            <a style="padding: 3px" href="@Url.Action("AddItem", "Cart", new { key = m.ProductID, Quantity = 1})">BuyNow</a>
+        }
+        else
+        {
+            <p>Out of Stock</p>
+        }
+
+    </div>
+
+</div>

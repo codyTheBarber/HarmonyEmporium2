@@ -1,0 +1,62 @@
+﻿@using Harmony_Emporium.Models.ViewModels
+@model  Harmony_Emporium.Models.ViewModels.ProductsViewModel
+@Styles.Render("~/Content/HarmonyEmporium.css")
+@{
+    ViewBag.Title = "CreateProducts";
+}
+
+<h2>CreateProduct</h2>
+
+<div class="CreateProductPage">
+    @using (Html.BeginForm("CreateProduct", "Products", FormMethod.Post))
+    {
+        <div class="createProductForm">
+
+            <div>
+                @Html.Label("Supplier")
+                @Html.DropDownListFor(m => m.SingleProduct.SupplierID, new SelectList(Model.AllSuppliers, "SupplierID", "SupplierName"), "Select Supplier")
+            </div>
+            <div>
+                @Html.Label("Category")
+                @Html.DropDownListFor(m => m.SingleProduct.CategoryID, new SelectList(Model.AllCategories, "CategoryID", "CategoryName"), "Select Category")
+            </div>
+            <div>
+                @Html.Label("Brands")
+                @Html.DropDownListFor(m => m.SingleProduct.BrandID, new SelectList(Model.AllBrands, "BrandID", "BrandName"), "Select Brand")
+            </div>
+            <div>
+                @Html.LabelFor(m => m.SingleProduct.ProductName)
+                @Html.TextBoxFor(m => m.SingleProduct.ProductName)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.SingleProduct.RetailPrice)
+                @Html.TextBoxFor(m => m.SingleProduct.RetailPrice)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.SingleProduct.WholeSalePrice)
+                @Html.TextBoxFor(m => m.SingleProduct.WholeSalePrice)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.SingleProduct.OnSale)
+                @Html.TextBoxFor(m => m.SingleProduct.OnSale)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.SingleProduct.Quantity)
+                @Html.TextBoxFor(m => m.SingleProduct.Quantity)
+            </div>
+            <div>
+                @Html.Label("Color")
+                @Html.TextBoxFor(m => m.SingleProduct.Color)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.SingleProduct.Description)
+                @Html.TextAreaFor(m => m.SingleProduct.Description)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.SingleProduct.ProductPhotoURL)
+                @Html.TextBoxFor(m => m.SingleProduct.ProductPhotoURL)
+            </div>
+            <input type="submit" value="Submit" />
+        </div>
+    }
+</div>

@@ -1,0 +1,33 @@
+﻿@using Harmony_Emporium.Models
+@{
+    ViewBag.Title = "CheckOut";
+    decimal total = 0;
+}
+
+<h2>Check Out</h2>
+<table>
+    <tr>
+        <th>
+            Item Name
+        </th>
+        <th>
+            Price
+        </th>
+    </tr>
+    @foreach (ModelCart product in Model.Cart)
+    {
+        <tr>
+            <td>
+                @Html.DisplayTextFor(m => product.ProductName)
+            </td>
+            <td>
+                @Html.DisplayTextFor(m => product.RetailPrice)
+            </td>
+        </tr>
+    }
+</table>
+
+
+
+
+

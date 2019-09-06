@@ -3,64 +3,165 @@
 @Styles.Render("~/Content/HarmonyEmporium.css")
 @{
     ViewBag.Title = "Edit Product";
-
+    var p = Model.SingleProduct;
 }
 
 <div class="EditProductPage">
     @using (Html.BeginForm("EditProduct", "Products", FormMethod.Post))
     {
-        <div>
+    <div class="updateProductForm">
 
-            <div>
-                @Html.LabelFor(m => m.SingleProduct.SupplierID)
-                @Html.TextBoxFor(m => m.SingleProduct.SupplierID)
-            </div>
-            <div>
-                @Html.LabelFor(m => m.SingleProduct.CategoryID)
-                @Html.TextBoxFor(m => m.SingleProduct.CategoryID)
-            </div>
-            <div>
-                @Html.LabelFor(m => m.SingleProduct.BrandID)
-                @Html.TextBoxFor(m => m.SingleProduct.BrandID)
-            </div>
-            <div>
-                @Html.LabelFor(m => m.SingleProduct.ProductName)
-                @Html.TextBoxFor(m => m.SingleProduct.ProductName)
-            </div>
-            <div>
-                @Html.LabelFor(m => m.SingleProduct.RetailPrice)
-                @Html.TextBoxFor(m => m.SingleProduct.RetailPrice)
-            </div>
-            <div>
-                @Html.LabelFor(m => m.SingleProduct.WholeSalePrice)
-                @Html.TextBoxFor(m => m.SingleProduct.WholeSalePrice)
-            </div>
-            <div>
-                @Html.LabelFor(m => m.SingleProduct.OnSale)
-                @Html.TextBoxFor(m => m.SingleProduct.OnSale)
-            </div>
-            <div>
-                @Html.LabelFor(m => m.SingleProduct.Quantity)
-                @Html.TextBoxFor(m => m.SingleProduct.Quantity)
-            </div>
-            <div>
-                @Html.LabelFor(m => m.SingleProduct.Color)
-                @Html.TextBoxFor(m => m.SingleProduct.Color)
-            </div>
-            <div>
-                @Html.LabelFor(m => m.SingleProduct.Description)
-                @Html.TextBoxFor(m => m.SingleProduct.Description)
-            </div>
-            <div>
-                @Html.LabelFor(m => m.SingleProduct.ProductCreateDate)
-                @Html.TextBoxFor(m => m.SingleProduct.ProductCreateDate)
-            </div>
-            <div>
-                @Html.LabelFor(m => m.SingleProduct.ProductPhotoURL)
-                @Html.TextBoxFor(m => m.SingleProduct.ProductPhotoURL)
-            </div>
-            <input  type="submit" value="Submit" />
-        </div>
+        @switch ((int)Session["RoleID"])
+        {
+            case 2:
+                <div>
+                    @Html.Label("Supplier")
+                    @Html.DisplayFor(m => p.SupplierName)
+                </div>
+                <div>
+                    @Html.Label("Category")
+                    @Html.DropDownListFor(m => m.SingleProduct.CategoryID, new SelectList(Model.AllCategories, "CategoryID", "CategoryName"), p.CategoryName)
+                </div>
+                <div>
+                    @Html.Label("Brands")
+                    @Html.DisplayFor(m => p.BrandName)
+
+                </div>
+                <div>
+                    @Html.LabelFor(m => p.ProductName)
+                    @Html.TextBoxFor(m => p.ProductName)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.SingleProduct.RetailPrice)
+                    @Html.TextBoxFor(m => m.SingleProduct.RetailPrice)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.SingleProduct.WholeSalePrice)
+                    @Html.DisplayTextFor(m => m.SingleProduct.WholeSalePrice)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.SingleProduct.OnSale)
+                    @Html.TextBoxFor(m => m.SingleProduct.OnSale)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.SingleProduct.Quantity)
+                    @Html.DisplayFor(m => m.SingleProduct.Quantity)
+                </div>
+                <div>
+                    @Html.Label("Color")
+                    @Html.TextBoxFor(m => m.SingleProduct.Color)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.SingleProduct.Description)
+                    @Html.TextAreaFor(m => m.SingleProduct.Description)
+                </div>
+                <div>
+                    <img src="@Url.Content(p.ProductPhotoURL)">
+                    @Html.LabelFor(m => m.SingleProduct.ProductPhotoURL)
+                    @Html.TextBoxFor(m => m.SingleProduct.ProductPhotoURL)
+                </div>
+                break;
+            case 3:
+                <div>
+                    @Html.Label("Supplier")
+                    @Html.DropDownListFor(m => m.SingleProduct.SupplierID, new SelectList(Model.AllSuppliers, "SupplierID", "SupplierName"), p.SupplierName)
+                </div>
+                <div>
+                    @Html.Label("Category")
+                    @Html.DropDownListFor(m => m.SingleProduct.CategoryID, new SelectList(Model.AllCategories, "CategoryID", "CategoryName"), p.CategoryName)
+                </div>
+                <div>
+                    @Html.Label("Brands")
+                    @Html.DropDownListFor(m => m.SingleProduct.BrandID, new SelectList(Model.AllBrands, "BrandID", "BrandName"), p.BrandName)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.SingleProduct.ProductName)
+                    @Html.TextBoxFor(m => m.SingleProduct.ProductName)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.SingleProduct.RetailPrice)
+                    @Html.TextBoxFor(m => m.SingleProduct.RetailPrice)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.SingleProduct.WholeSalePrice)
+                    @Html.TextBoxFor(m => m.SingleProduct.WholeSalePrice)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.SingleProduct.OnSale)
+                    @Html.TextBoxFor(m => m.SingleProduct.OnSale)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.SingleProduct.Quantity)
+                    @Html.TextBoxFor(m => m.SingleProduct.Quantity)
+                </div>
+                <div>
+                    @Html.Label("Color")
+                    @Html.TextBoxFor(m => m.SingleProduct.Color)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.SingleProduct.Description)
+                    @Html.TextAreaFor(m => m.SingleProduct.Description)
+                </div>
+                <div>
+                    <img src="@Url.Content(p.ProductPhotoURL)">
+                    @Html.LabelFor(m => m.SingleProduct.ProductPhotoURL)
+                    @Html.TextBoxFor(m => m.SingleProduct.ProductPhotoURL)
+                </div>
+                break;
+            case 4:
+                <div>
+                    @Html.Label("Supplier")
+                    @Html.DropDownListFor(m => m.SingleProduct.SupplierID, new SelectList(Model.AllSuppliers, "SupplierID", "SupplierName"), p.SupplierName)
+                </div>
+                <div>
+                    @Html.Label("Category")
+                    @Html.DropDownListFor(m => m.SingleProduct.CategoryID, new SelectList(Model.AllCategories, "CategoryID", "CategoryName"), p.CategoryName)
+                </div>
+                <div>
+                    @Html.Label("Brands")
+                    @Html.DropDownListFor(m => m.SingleProduct.BrandID, new SelectList(Model.AllBrands, "BrandID", "BrandName"), p.BrandName)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.SingleProduct.ProductName)
+                    @Html.TextBoxFor(m => m.SingleProduct.ProductName)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.SingleProduct.RetailPrice)
+                    @Html.TextBoxFor(m => m.SingleProduct.RetailPrice)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.SingleProduct.WholeSalePrice)
+                    @Html.TextBoxFor(m => m.SingleProduct.WholeSalePrice)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.SingleProduct.OnSale)
+                    @Html.TextBoxFor(m => m.SingleProduct.OnSale)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.SingleProduct.Quantity)
+                    @Html.TextBoxFor(m => m.SingleProduct.Quantity)
+                </div>
+                <div>
+                    @Html.Label("Color")
+                    @Html.TextBoxFor(m => m.SingleProduct.Color)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.SingleProduct.Description)
+                    @Html.TextAreaFor(m => m.SingleProduct.Description)
+                </div>
+                <div>
+                    <img src="@Url.Content(p.ProductPhotoURL)">
+                    @Html.LabelFor(m => m.SingleProduct.ProductPhotoURL)
+                    @Html.TextBoxFor(m => m.SingleProduct.ProductPhotoURL)
+                </div>
+                break;
+
+        }
+        <input type="submit" value="Submit" />
+
+
+    </div>
+
     }
 
 </div>

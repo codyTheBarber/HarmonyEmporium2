@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Harmony_Emporium.Models.ViewModels;
 using Data.DataAccess;
 using Data.Objects;
+using Logic.Objects;
+using Logic;
 
 namespace Harmony_Emporium.Controllers
 {
@@ -14,6 +16,7 @@ namespace Harmony_Emporium.Controllers
     {
         // GET: CartItems
         static CartItemsDataAccess CartDAL = new CartItemsDataAccess();
+        static FeesDataAccess FeesDAL = new FeesDataAccess();
         static Mapper mapper = new Mapper();
 
         [HttpGet]
@@ -97,7 +100,16 @@ namespace Harmony_Emporium.Controllers
             CartDAL.ClearCart((int)Session["UserID"]);
             return RedirectToAction("MyCart", "Cart", new { Limit = false });
         }
-        public ActionResult PurchaseCart()
+        public ActionResult CheckOut()
+        {
+            CartLogic cartTotal = new CartLogic();
+                
+            CartViewModel viewModel = new CartViewModel();
+            viewModel.SingleFee = mapper.Map(FeesDAL.GetActiveFee());
+            viewModel.Cart = mapper.Map(CartDAL.GetCartItems((int)Session["UserID"]));
+            return View(viewModel);
+        }
+        public ActionResult PurchaseCart(CartViewModel viewModel)
         {
             CartDAL.ClearCart((int)Session["UserID"]);
             return View("ConfirmationPage", "Cart");

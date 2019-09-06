@@ -1,53 +1,7 @@
-﻿@using Harmony_Emporium.Models
-@using Harmony_Emporium.Models.ViewModels
-@Styles.Render("~/Content/HarmonyEmporium.css")
+﻿
 @{
-    ViewBag.Title = "All Products";
-
-
-
+    ViewBag.Title = "AllProducts";
 }
-<h1>@ViewBag.Message</h1>
 
+<h2>AllProducts</h2>
 
-
-<div class="ProductList">
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Supplier</th>
-            <th>Category</th>
-            <th>Retail</th>
-            <th>WholeSale</th>
-            <th>On Sale</th>
-            <th>Creation Date</th>
-            <th></th>
-            <th></th>
-
-
-        </tr>
-        @foreach (ModelProducts SingleProduct in Model.AllProducts)
-        {
-
-    <tr>
-        <td>@SingleProduct.ProductID</td>
-        <td>@SingleProduct.ProductName</td>
-        <td>@SingleProduct.SupplierName</td>
-        <td>@SingleProduct.CategoryName</td>
-        <td>@SingleProduct.RetailPrice</td>
-        <td>@SingleProduct.WholeSalePrice</td>
-        <td>@SingleProduct.OnSale</td>
-        <td>@SingleProduct.ProductCreateDate</td>
-        <td>@Html.ActionLink("Delete", "DeleteProduct","Products", routeValues: new { productID = SingleProduct.ProductID }, htmlAttributes: new { @class = "btn btn-default" } )</td>
-        <td>@Html.ActionLink("Delete", "DeleteProduct", "Products", routeValues: new { productID = SingleProduct.ProductID }, htmlAttributes: new { @class = "btn btn-default" })</td>
-
-
-
-
-    </tr>
-
-
-        }
-    </table>
-</div>

@@ -1,0 +1,44 @@
+﻿@using Harmony_Emporium.Models.ViewModels
+@model Harmony_Emporium.Models.ViewModels.SupplierViewModel
+@Styles.Render("~/Content/HarmonyEmporium.css")
+@{
+    ViewBag.Title = "Edit Supplier";
+    var s = Model.SingleSupplier;
+}
+
+<div class="EditSupplierPage">
+    @using (Html.BeginForm("EditSupplier", "Suppliers", FormMethod.Post))
+    {
+        <div class="editSupplierForm">
+            <div class="editSupplierForm">
+                <div>
+                    @Html.Label("Supplier Name")
+                    @Html.TextBoxFor(m => s.SupplierName)
+                </div>
+                <div>
+                    @Html.Label("Contact Name")
+                    @Html.TextBoxFor(m => s.ContactName)
+                </div>
+                <div>
+                    @Html.Label("Contact Email")
+                    @Html.TextBoxFor(m => s.ContactEmail)
+                </div>
+                <div>
+                    @Html.Label("Address")
+                    @Html.TextBoxFor(m => s.Address)
+                </div>
+                <div>
+                    @Html.Label("Website")
+                    @Html.TextBoxFor(m => s.WebsiteURL)
+                </div>
+                <div>
+                    <img src="@Url.Content(s.SuppliersPhotoURL)"/>
+                    @Html.Label("PhotoURL")
+                    @Html.TextBoxFor(m => s.SuppliersPhotoURL)
+                </div>
+                <input type="submit" value="Submit" />
+            </div>
+
+        </div>
+    }
+</div>

@@ -13,6 +13,11 @@ namespace Harmony_Emporium.Models.ViewModels
         public List<ModelProducts> BrandProducts { get; set; }
         public List<ModelProducts> OnSaleProducts { get; set; }
         public List<ModelProducts> FeedProducts { get; set; }
+        public List<ModelSuppliers> AllSuppliers { get; set; }
+        public List<ModelBrands> AllBrands { get; set; }
+        public List<ModelCategories> AllCategories { get; set; }
+
+
 
         public ProductsViewModel()
         {
@@ -22,7 +27,9 @@ namespace Harmony_Emporium.Models.ViewModels
             BrandProducts = new List<ModelProducts>();
             OnSaleProducts = new List<ModelProducts>();
             FeedProducts = new List<ModelProducts>();
+            AllSuppliers = new List<ModelSuppliers>();
+            AllBrands = new List<ModelBrands>();
+            AllCategories = new List<ModelCategories>();
         }
     }
-
 }
